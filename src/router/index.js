@@ -4,6 +4,8 @@ import layout from '@/pages/layout'
 import home from '@/pages/home'
 import message from '@/pages/message'
 import user from '@/pages/user'
+import registered from '@/pages/registered'
+import infoDetails from '@/pages/infoDetails'
 
 Vue.use(Router)
 
@@ -21,19 +23,29 @@ export default new Router({
 	    	{
 		    	path: '/home',
 			    name: 'home',
-			    component: home,
+					component: home
 		    },
 	    	{
 		    	path: '/message',
 			    name: 'message',
-			    component: message,
+			    component: message
 		    },
 		    {
 		    	path: '/user',
 			    name: 'user',
-			    component: user,
+			    component: user
 		    }
 		]
-    }
+		},
+		{
+			name:'registered',
+			path:'/registered',
+			component:registered
+		},
+		{
+			name:'infoDetails',
+			path:'/infoDetails',
+			component:infoDetails
+		}
   ]
 })

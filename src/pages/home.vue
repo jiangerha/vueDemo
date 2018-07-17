@@ -1,18 +1,23 @@
 <template>
 	<div id="home">
 		<swiper :options="swiperOption" ref="mySwiper" class="swiper-box">
-		    <swiper-slide v-for="banner in banners" class="swiper-item">
-		    	<img :src="banner"/>
+		    <swiper-slide v-for="(banner,i) in banners" class="swiper-item" :key="i">
+		    	<img :src="banner" :alt="['banner' + i]"/>
 		    </swiper-slide>
 		    <div class="swiper-pagination" slot="pagination"></div>
 		 </swiper>
-		 <list :listData="operationList"></list>
+		 <list :listData="operationList" class="operate-list"></list>
+		 <list :listData="personlOperateList" class="personal-operate-list"></list>
+		 <advisory></advisory>
+		 <info-list></info-list>
 	</div>
   
 </template>
 
 <script>
 	import list from '@/components/list'
+	import advisory from '@/components/advisory'
+	import infoList from '@/components/infoList'
 	import { swiper, swiperSlide } from 'vue-awesome-swiper'
 	export default {
 	    data() {
@@ -31,19 +36,38 @@
 	        },
 	        operationList:[
 	        	{
-	        		icon:'menu',
-	        		title:'预约挂号'
+	        		icon:'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=884897413,2023273662&fm=27&gp=0.jpg',
+							title:'预约挂号',
+							url:'/registered'
 	        	},{
-	        		icon:'menu',
-	        		title:'在线药房'
+	        		icon:'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=884897413,2023273662&fm=27&gp=0.jpg',
+							title:'在线药房',
+							url:'/pharmacy'
 	        	},{
-	        		icon:'menu',
-	        		title:'慈善援助'
+	        		icon:'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=884897413,2023273662&fm=27&gp=0.jpg',
+							title:'慈善援助',
+							url:'/assistance'
 	        	},{
-	        		icon:'menu',
-	        		title:'找专家'
+	        		icon:'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=884897413,2023273662&fm=27&gp=0.jpg',
+							title:'找专家',
+							url:'/experts'
 	        	}
-	        ]
+					],
+					personlOperateList:[
+						{
+	        		icon:'http://img2.imgtn.bdimg.com/it/u=3406018163,1106537101&fm=15&gp=0.jpg',
+							title:'用药提醒',
+							url:''
+	        	},{
+	        		icon:'http://img2.imgtn.bdimg.com/it/u=3406018163,1106537101&fm=15&gp=0.jpg',
+							title:'健康档案',
+							url:''
+	        	},{
+	        		icon:'http://img2.imgtn.bdimg.com/it/u=3406018163,1106537101&fm=15&gp=0.jpg',
+							title:'健康自测',
+							url:''
+	        	}
+					]
 	      }
 	    },
 	    mounted(){
@@ -57,7 +81,9 @@
 	    components:{
 	    	swiper,
 	    	swiperSlide,
-	    	list
+				list,
+				advisory,
+				infoList
 	    }
 	  }
 </script>
@@ -77,67 +103,33 @@
 			    text-align: center;
 			    font-size: 38px;
 			    font-weight: 700;
-				background-color: #eee;
-				display: -webkit-box;
-				display: -ms-flexbox;
-				display: flex;
-				-webkit-box-pack: center;
-				-ms-flex-pack: center;
-				justify-content: center;
-				-webkit-box-align: center;
-				-ms-flex-align: center;
-				align-items: center;
+					background-color: #eee;
+					display: -webkit-box;
+					display: -ms-flexbox;
+					display: flex;
+					-webkit-box-pack: center;
+					-ms-flex-pack: center;
+					justify-content: center;
+					-webkit-box-align: center;
+					-ms-flex-align: center;
+					align-items: center;
+				}
+	    }
+		}
+		.operate-list{
+			margin-bottom: .8rem;
+		}
+		.personal-operate-list{
+			margin-bottom: 1rem;
+			.md-layout-item{
+				border-right: 1px solid #f7f7f7;
+				&:last-child{
+					border: none;
+				}
+				img{
+					width: 3rem;
+				}
 			}
-	    }
-    
-  	}
+		}
 }
-  
-  
 </style>
-<!-- <template>
-	<div id="home">
-		<swiper :options="swiperOption" ref="mySwiper" @someSwiperEvent="callback">
-		    <swiper-slide v-for="item in banners">
-		    	<img :src="item"/>
-		    </swiper-slide>
-		    <<div class="swiper-pagination" slot="pagination"></div>
-		</swiper>
-	</div>
-</template>
-<script type="text/javascript">
-	import { swiper, swiperSlide } from 'vue-awesome-swiper'
-	const bannerImgs = ['http://img5.imgtn.bdimg.com/it/u=2919318337,953979730&fm=27&gp=0.jpg','http://img5.imgtn.bdimg.com/it/u=2689590675,3322691748&fm=27&gp=0.jpg','http://img5.imgtn.bdimg.com/it/u=780597502,862981777&fm=27&gp=0.jpg']
-	export default {
-		name:'home',
-		data() {
-	      return {
-	      	banners:bannerImgs,
-	      	swiperOption: {
-	          pagination: {
-	            el: '.swiper-pagination'
-	          }
-	        }
-	      };
-	    },
-	    mounted(){
-	    	setInterval(() => {
-		        console.log('simulate async data')
-		        if (this.bannersbannersbanners.length < 10) {
-		          this.bannersbanners.push(this.banners.length + 1)
-		        }
-		      }, 3000)
-	    },
-	    methods: {
-	      
-	    },
-	    components:{
-	    	swiper,
-	    	swiperSlide
-	    }
-	}	
-</script>
-
-<style lang="scss" scoped>
-
-</style> -->
