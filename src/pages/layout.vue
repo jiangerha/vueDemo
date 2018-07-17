@@ -54,7 +54,10 @@
 	      }
 	      .md-active{
 	        color: #448AFF;
-	      }
+				}
+				.md-bottom-bar-label{
+					font-size: 1.4rem!important;
+				}
 	    }
 	  }
 }

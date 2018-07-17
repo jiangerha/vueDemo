@@ -17,7 +17,7 @@
       </div>
     </li>
     <li>
-        <div>
+        <div class="right-item">
           <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3274364543,2140105331&fm=27&gp=0.jpg"/>
           <div  class="item-text">
             <p class="blue_text">找专家</p>
@@ -51,6 +51,7 @@
         border-right: 1px solid #ececec;
         >div{
           height: 10rem;
+          display: flex;
           &:first-child{
             height: 9.9rem;
             border-bottom: 1px solid #ececec;
@@ -69,6 +70,9 @@
       }
       .descrip{
         font-size: 1.2rem;
+      }
+      .right-item{
+        margin: 1.4rem;
       }
       .orange_text{
         color: orange;

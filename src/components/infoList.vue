@@ -1,7 +1,7 @@
 <template>
   <div class="info-list-box">
     <list-header :title="title"></list-header>
-    <ul class="info-list">
+    <ul v-if="infoList.length > 0" class="info-list">
       <router-link v-for="(item,i) in infoList" :key="i" tag="li" :to="{path:'/infoDetails',query:{id:item.id},params:{title:item.title}}">
         <div class="item-text">
           <p class="title" v-text="item.title"></p>
@@ -12,6 +12,7 @@
         </div>
       </router-link>
     </ul>
+    <md-progress-spinner v-else :md-diameter="30" :md-stroke="3" md-mode="indeterminate"></md-progress-spinner>
   </div>
 </template>
 <script>
