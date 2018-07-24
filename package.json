@@ -13,6 +13,8 @@
     "axios": "^0.18.0",
     "better-scroll": "^1.12.4",
     "element-ui": "^2.4.4",
+    "express-myconnection": "^1.0.4",
+    "mysql": "^2.16.0",
     "node-sass": "^4.9.2",
     "style-loader": "^0.21.0",
     "swiper": "^4.3.3",
